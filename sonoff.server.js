@@ -28,6 +28,8 @@ config.logger = {
 
 const log = config.logger;
 
+log.log('Setting up on %d', process.env.PORT || config.server.httpsPort);
+
 // call sonoff server for device handling 
 var devices = sonoffServer.createServer(config);
 
