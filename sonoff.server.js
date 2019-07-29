@@ -16,13 +16,13 @@ config.logger = {
     debug: console.debug,
 };
 
-if (process.env.HTTP_PORT !== undefined)
+//if (process.env.HTTP_PORT !== undefined)
     config.server.httpPort = process.env.HTTP_PORT;
-if (process.env.HTTPS_PORT !== undefined)
+//if (process.env.HTTPS_PORT !== undefined)
     config.server.httpsPort = process.env.HTTPS_PORT;
-if (process.env.WEBSOCKET_PORT !== undefined)
+//if (process.env.WEBSOCKET_PORT !== undefined)
     config.server.websocketPort = process.env.WEBSOCKET_PORT;
-if (process.env.SERVER_IP !== undefined)
+//if (process.env.SERVER_IP !== undefined)
     config.server.IP = process.env.SERVER_IP;
 
 
