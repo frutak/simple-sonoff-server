@@ -37,7 +37,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 var httpServer = http.createServer(server)
 
-httpServer.listen(config.server.httpPort, function () {
+httpServer.listen(process.env.PORT || 5000, function () {
     log.log('API Server Started On Port %d', config.server.httpPort);
 });
 
