@@ -115,7 +115,7 @@ module.exports.createServer = function (config) {
 
     var httpsServer = https.createServer(credentials, server);
 
-    httpsServer.listen(config.server.httpsPort, function () {
+    httpsServer.listen(process.env.PORT || config.server.httpsPort, function () {
         log.log('SONOFF Server Started On Port %d', config.server.httpsPort);
     });
 
