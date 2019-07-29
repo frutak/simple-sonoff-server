@@ -6,11 +6,12 @@ module.exports.createServer = function (config) {
     const ws = require("nodejs-websocket");
     const log = config.logger;
 
-    if (config.server.privateKey === undefined)
-        config.server.privateKey = fs.readFileSync(path.resolve(__dirname, './certs/server.key'));
+    log.log('Setting up on %d', process.env.PORT || config.server.httpsPort);
+  //  if (config.server.privateKey === undefined)
+    //    config.server.privateKey = fs.readFileSync(path.resolve(__dirname, './certs/server.key'));
 
-    if (config.server.certificate === undefined)
-        config.server.certificate = fs.readFileSync(path.resolve(__dirname, './certs/server.crt'));
+    //if (config.server.certificate === undefined)
+      //  config.server.certificate = fs.readFileSync(path.resolve(__dirname, './certs/server.crt'));
 
     //set initialized parameters
     var state = {
