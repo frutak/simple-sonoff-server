@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "A simple SONOFF Cloud replacement.",
   "main": "sonoff.server.module.js",
+  "start": "sonoff.server.module.js",
   "dependencies": {
     "fs": "^0.0.1-security",
     "http": "^0.0.0",
