@@ -5,6 +5,7 @@
   "main": "simple.js",
   "dependencies": {
     "fs": "^0.0.1-security",
+    "ws": "0.4.x",
     "http": "^0.0.0",
     "https": "^1.0.0",
     "express": "^4.16.2",
