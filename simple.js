@@ -26,11 +26,15 @@ wss.on("connection", function(ws) {
             }
     var r = JSON.stringify(res);
     ws.sendText(r);
+    console.log("data %s", r)
+    res = { action: 'update', value: { switch: "off" }, target: deviceId }
+    var r = JSON.stringify(res);
+    ws.sendText(r);
+    console.log("data %s", r)
   })
 
 
   ws.on("close", function() {
     console.log("websocket connection close")
-    clearInterval(id)
   })
 })
