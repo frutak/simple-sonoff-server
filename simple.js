@@ -14,7 +14,8 @@ console.log("http server listening on %d", port)
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
-wss.on("connection", function (str) {
+wss.on("connection", function(ws) {
+  ws.on("connection", function (str) {
     console.log("websocket connection open")
     var data = JSON.parse(str)
     console.log("data %s", JSON.stringify(data))
@@ -23,7 +24,14 @@ wss.on("connection", function (str) {
                 "deviceid": data.deviceid,
                 "apikey": "111111111-1111-1111-1111-111111111111"
             }
-  var r = JSON.stringify(res);
-  wss.sendText(r);
-
+    var r = JSON.stringify(res);
+    ws.sendText(r);
   })
+
+
+  ws.on("close", function() {
+    console.log("websocket connection close")
+    clearInterval(id)
+  })
+})
+
