@@ -11,7 +11,9 @@ server.listen(port)
 
 console.log("http server listening on %d", port)
 
-var wss = new WebSocketServer({server: server})
+const wss = new WebSocket.Server({
+    'server': server
+})
 console.log("websocket server created")
 
 wss.on("connection", function(ws) {
