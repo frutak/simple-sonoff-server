@@ -9,19 +9,26 @@ app.use(express.static(__dirname + "/"))
 var server = http.createServer(app)
 server.listen(port)
 
-
-
 console.log("http server listening on %d", port)
 
 var wss = new WebSocketServer({server: server})
+
 console.log("websocket server created")
 
 wss.on("connection", function(ws) {
-  var id = setInterval(function() {
-    ws.send(JSON.stringify(new Date()), function() {  })
-  }, 1000)
+  ws.on("connection", function (str) {
+    console.log("websocket connection open")
+    var data = JSON.parse(str)
+    console.log("data %s", JSON.stringify(data))
+    res = {
+                "error": 0,
+                "deviceid": data.deviceid,
+                "apikey": "111111111-1111-1111-1111-111111111111"
+            }
+    var r = JSON.stringify(res);
+    ws.sendText(r);
+  })
 
-  console.log("websocket connection open")
 
   ws.on("close", function() {
     console.log("websocket connection close")
