@@ -235,3 +235,51 @@ wss.on("connection", function(conn) {
             log.error("Connection error: ", error);
         });
 })
+
+    return {
+        //currently all known devices are returned with a hint if they are currently connected
+        getConnectedDevices: () => {
+            return state.knownDevices.map(x => {
+                return { id: x.id, state: x.state, model: x.model, kind: x.kind, version: x.version, isConnected: (typeof x.conn !== 'undefined'), isAlive: x.isAlive, rawMessageRegister: x.rawMessageRegister, rawMessageLastUpdate: x.rawMessageLastUpdate }
+            });
+        },
+
+        getDeviceState: (deviceId) => {
+            var d = state.getDeviceById(deviceId);
+            if (!d || (typeof d.conn == 'undefined')) return "disconnected";
+            return d.state;
+        },
+
+        turnOnDevice: (deviceId) => {
+            var d = state.getDeviceById(deviceId);
+            if (!d || (typeof d.conn == 'undefined')) return "disconnected";
+            state.pushMessage({ action: 'update', value: { switch: "on" }, target: deviceId });
+            return "on";
+        },
+
+        turnOffDevice: (deviceId) => {
+            var d = state.getDeviceById(deviceId);
+            if (!d || (typeof d.conn == 'undefined')) return "disconnected";
+            state.pushMessage({ action: 'update', value: { switch: "off" }, target: deviceId });
+            return "off";
+        },
+
+        registerOnDeviceConnectedListener: (deviceId, listener) => {
+            addDeviceListener(state.listeners.onDeviceConnectedListeners, deviceId, listener);
+        },
+
+        registerOnDeviceDisconnectedListener: (deviceId, listener) => {
+            addDeviceListener(state.listeners.onDeviceDisconnectedListeners, deviceId, listener);
+        },
+
+        registerOnDeviceUpdatedListener: (deviceId, listener) => {
+            addDeviceListener(state.listeners.onDeviceUpdatedListeners, deviceId, listener);
+        },
+
+        close: () => {
+            console.log("Stopping server");
+            state.knownDevices.forEach(device => device.conn.close());
+            server.close();
+            console.log("Stopped server");
+        }
+    }
