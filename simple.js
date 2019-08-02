@@ -121,9 +121,8 @@ server.listen(port)
 var wss = new WebSocket.Server({server: server})
 console.log("http server listening on %d", port)
 
-console.log("websocket server created")
-
 wss.on("connection", function(conn) {
+    console.log("websocket server created")
     conn.on("text", function (str) {
             var data = JSON.parse(str);
             console.log('REQ | WS | DEV | %s', JSON.stringify(data));
