@@ -1,4 +1,4 @@
-var WebSocketServer = require("ws")
+const WebSocket = require('ws')
 var http = require("http")
 var express = require("express")
 var app = express()
