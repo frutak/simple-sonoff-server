@@ -15,14 +15,13 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 wss.on("connection", function (str) {
-    var data = JSON.parse(str);
-    console.log("data %s", JSON.stringify(data));
+    var data = JSON.parse(str)
+    console.log("data %s", JSON.stringify(data))
     res = {
                 "error": 0,
                 "deviceid": data.deviceid,
                 "apikey": "111111111-1111-1111-1111-111111111111"
-            };
-        
+            }
   }, 1000)
 
   console.log("websocket connection open")
@@ -31,4 +30,3 @@ wss.on("connection", function (str) {
     console.log("websocket connection close")
     clearInterval(id)
   })
-})
