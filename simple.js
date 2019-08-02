@@ -6,11 +6,11 @@ var app = express()
 var port = process.env.PORT || 5000
 
 app.use(express.static(__dirname + "/"))
+// Register body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var server = http.createServer(app)
-    // Register body-parser
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
 
 server.listen(port)
 
