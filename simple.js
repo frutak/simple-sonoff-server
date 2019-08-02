@@ -235,3 +235,4 @@ wss.on("connection", function(conn) {
         conn.on("error", function (error) {
             log.error("Connection error: ", error);
         });
+})
