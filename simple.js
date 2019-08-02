@@ -20,8 +20,8 @@ server.listen(port)
         res.json({
             "error": 0,
             "reason": "ok",
-            "IP": config.server.IP,
-            "port": config.server.websocketPort
+            "IP": "http://sonoffix.herokuapp.com",
+            "port": port
         });
     });
 
