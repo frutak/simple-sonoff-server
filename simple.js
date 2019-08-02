@@ -7,6 +7,10 @@ var port = process.env.PORT || 5000
 app.use(express.static(__dirname + "/"))
 
 var server = http.createServer(app)
+    // Register body-parser
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+
 server.listen(port)
 
     // Register routes
