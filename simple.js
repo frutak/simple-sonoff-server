@@ -15,7 +15,7 @@ var server = http.createServer(app)
 server.listen(port)
 
     // Register routes
-    server.post('/dispatch/device', function (req, res) {
+    app.post('/dispatch/device', function (req, res) {
         log.log('REQ | %s | %s ', req.method, req.url);
         log.trace('REQ | %s', JSON.stringify(req.body));
         res.json({
@@ -27,7 +27,7 @@ server.listen(port)
     });
 
     // Register routes
-    server.get('/', function (req, res) {
+    app.get('/', function (req, res) {
         log.log('REQ | %s | %s ', req.method, req.url);
         res.send('OK');
     });
