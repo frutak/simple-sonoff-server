@@ -15,6 +15,7 @@ var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
 wss.on("connection", function (str) {
+    console.log("websocket connection open")
     var data = JSON.parse(str)
     console.log("data %s", JSON.stringify(data))
     res = {
@@ -23,10 +24,7 @@ wss.on("connection", function (str) {
                 "apikey": "111111111-1111-1111-1111-111111111111"
             }
   }, 1000)
+  var r = JSON.stringify(res);
+  wss.sendText(r);
 
-  console.log("websocket connection open")
-
-  ws.on("close", function() {
-    console.log("websocket connection close")
-    clearInterval(id)
   })
