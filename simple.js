@@ -23,7 +23,6 @@ wss.on("connection", function (str) {
                 "deviceid": data.deviceid,
                 "apikey": "111111111-1111-1111-1111-111111111111"
             }
-  }, 1000)
   var r = JSON.stringify(res);
   wss.sendText(r);
 
