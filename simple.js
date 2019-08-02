@@ -6,8 +6,27 @@ var port = process.env.PORT || 5000
 
 app.use(express.static(__dirname + "/"))
 
-//var server = http.createServer(app)
-//server.listen(port)
+var server = http.createServer(app)
+server.listen(port)
+
+    // Register routes
+    server.post('/dispatch/device', function (req, res) {
+        log.log('REQ | %s | %s ', req.method, req.url);
+        log.trace('REQ | %s', JSON.stringify(req.body));
+        res.json({
+            "error": 0,
+            "reason": "ok",
+            "IP": config.server.IP,
+            "port": config.server.websocketPort
+        });
+    });
+
+    // Register routes
+    server.get('/', function (req, res) {
+        log.log('REQ | %s | %s ', req.method, req.url);
+        res.send('OK');
+    });
+
 
 var wss = new WebSocket.Server({ port: port })
 console.log("http server listening on %d", port)
