@@ -16,8 +16,7 @@ server.listen(port)
 
     // Register routes
     app.post('/dispatch/device', function (req, res) {
-        log.log('REQ | %s | %s ', req.method, req.url);
-        log.trace('REQ | %s', JSON.stringify(req.body));
+        console.log('REQ | %s | %s ', req.method, req.url);
         res.json({
             "error": 0,
             "reason": "ok",
@@ -28,7 +27,7 @@ server.listen(port)
 
     // Register routes
     app.get('/', function (req, res) {
-        log.log('REQ | %s | %s ', req.method, req.url);
+        console.log('REQ | %s | %s ', req.method, req.url);
         res.send('OK');
     });
 
