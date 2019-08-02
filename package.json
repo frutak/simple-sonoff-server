@@ -2,7 +2,7 @@
   "name": "simple-sonoff-server",
   "version": "2.0.0",
   "description": "A simple SONOFF Cloud replacement.",
-  "main": "sonoff.server.module.js",
+  "main": "simple.js",
   "dependencies": {
     "fs": "^0.0.1-security",
     "http": "^0.0.0",
@@ -17,7 +17,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sonoff.server.module.js"
+    "start": "node simple.js"
   },
   "keywords": [
     "sonoff"
